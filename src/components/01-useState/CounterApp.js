@@ -3,21 +3,37 @@ import './CounterApp.css';
 
 export const CounterApp = () => {
 
-    const [counter, setCounter] = useState(10)
+    const [ state, setState ] = useState({ 
+        counter1: 10,
+        counter2: 20,
+        counter3: 20,
+        counter4: 20
+     })
+
+     // destructured used props
+     const { counter1, counter2 } = state;
 
     return (
         <div className="container">
-            <h1>Counter: { counter }</h1>
+            <h1>CounterA: { counter1 }</h1>
+            <h1>CounterB: { counter2 }</h1>
             <hr />
 
             <button 
                 className="btn btn-primary"
-                onClick={ () => setCounter( counter + 1 ) }
+                onClick={ () => setState({
+                    ...state,
+                    counter1: counter1 + 1
+
+                }) }
             > +1 </button>
 
             <button
                 className="btn btn-secondary"
-                onClick={ () => setCounter( 0 ) }
+                onClick={ () => setState({
+                    ...state,
+                    counter1: 0
+                }) }
             > Reset </button>
         </div>
     )
