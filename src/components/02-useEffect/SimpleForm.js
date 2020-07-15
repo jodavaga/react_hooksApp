@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Message } from './Message';
 
 export const SimpleForm = () => {
 
@@ -18,7 +19,6 @@ export const SimpleForm = () => {
     useEffect(() => {
         console.log("FormState updated");
     }, [ formState ]);
-
 
     const handleInputChange = ({ target }) => {
         setFormState({
@@ -52,6 +52,8 @@ export const SimpleForm = () => {
                     autoComplete="off"
                 ></input>   
             </div>
+
+            { name  === 'jose' && <Message />}
         </div>
     )
 }
