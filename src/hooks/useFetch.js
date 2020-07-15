@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export const useFetch = ( url ) => {
 
-    const [ state, setState ] = useState({ data: null, loading: true, errors: null });
+    const [ state, setState ] = useState({ data: null, loading: true, error: null });
 
     if (!url) {
         throw new Error('Url required!');
@@ -19,11 +19,11 @@ export const useFetch = ( url ) => {
                     errors: null
                 });
             })
-            .catch( errors => {
+            .catch( error => {
                 setState({
                     data: null,
                     loading: false,
-                    errors
+                    error
                 })
             })
     }, [ url ]);
