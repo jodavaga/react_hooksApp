@@ -9,6 +9,11 @@ export const useFetch = ( url ) => {
     }
 
     useEffect(() => {
+
+        setState({
+            ...state,
+            loading: true
+        })
         
         fetch( url )
             .then( resp => resp.json() )

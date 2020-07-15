@@ -1,9 +1,12 @@
 import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
+import { useCounter } from '../../hooks/useCounter';
 
 export const MultipleCustomHooks = () => {
 
-    const state = useFetch( `https://www.breakingbadapi.com/api/quotes/1` );
+    const { counter, increment } = useCounter( 1 );
+    const state = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` );
+
 
     console.log(state);
 
@@ -12,16 +15,9 @@ export const MultipleCustomHooks = () => {
     // destructured data object. Evaluate, if not null, return data[0]
     const { author, quote } = !!data && data[0];
 
-    //// similar to: 
-    // let author, quote;
-    // if (data !== null) {
-    //      author = data[0].author;
-    //      quote = data[0].quote;
-    // }
-
     return (
         <div className="container">
-            <h1>Multiple Custom Hooks!!</h1>
+            <h1>Breaking Bad Quotes</h1>
             <hr />
             {
                 error && <div className="alert alert-danger"> Algo salio mal </div>
@@ -44,6 +40,11 @@ export const MultipleCustomHooks = () => {
                         </div>
                     )       
             }
+
+            <button
+                className="btn btn-primary mt-3"
+                onClick={ () => increment() }
+            >Next</button>
 
         </div>
     )
