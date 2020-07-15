@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const SimpleForm = () => {
 
-    const [state, setState] = useState({
+    const [formState, setFormState] = useState({
         name: '',
         email: ''
     });
+    
+    const { name, email } = formState;
+    
+    // Only executed one time (on loaded component)
+    useEffect(() => {
+        console.log("First time loaded");
+    }, []);
+    
+    // Executed every time something change on form
+    useEffect(() => {
+        console.log("FormState updated");
+    }, [ formState ]);
 
-    const { name, email } = state;
 
-    const handleInputChange = (e) => {
-        setState({
-            ...state,
-            [ e.target.name ]: e.target.value
+    const handleInputChange = ({ target }) => {
+        setFormState({
+            ...formState,
+            [ target.name ]: target.value
         })
     }
 
