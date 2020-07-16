@@ -9,11 +9,12 @@ import ReactDOM from 'react-dom';
 // import { FocusScreen } from './components/04-useRef/FocusScreen';
 // import { RealExampleUseRef } from './components/04-useRef/RealExampleUseRef';
 // import { LayoutEffect } from './components/05-useLayoutEffect/LayoutEffect';
-import { Memorized } from './components/06-memos/Memorized';
+// import { Memorized } from './components/06-memos/Memorized';
+import { MemoHook } from './components/06-memos/MemoHook';
 
 ReactDOM.render(
     // <CounterApp />,
-    <Memorized />,
+    <MemoHook />,
   document.getElementById('root')
 );
 
