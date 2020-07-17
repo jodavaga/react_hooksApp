@@ -10,11 +10,12 @@ import ReactDOM from 'react-dom';
 // import { RealExampleUseRef } from './components/04-useRef/RealExampleUseRef';
 // import { LayoutEffect } from './components/05-useLayoutEffect/LayoutEffect';
 // import { Memorized } from './components/06-memos/Memorized';
-import { MemoHook } from './components/06-memos/MemoHook';
+// import { MemoHook } from './components/06-memos/MemoHook';
+import { CallbackHook } from './components/06-memos/CallbackHook';
 
 ReactDOM.render(
     // <CounterApp />,
-    <MemoHook />,
+    <CallbackHook />,
   document.getElementById('root')
 );
 
