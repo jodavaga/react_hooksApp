@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef } from 'react';
 import { todoReducer } from './todoReducer';
 
 import './styles.css';
@@ -12,7 +12,29 @@ const initialState = [{
 
 export const TodoApp = () => {
 
-    const [ todos ] = useReducer(todoReducer, initialState);
+    const [ todos, dispacth ] = useReducer(todoReducer, initialState);
+    const inputRef = useRef('');
+
+    // add new todo
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+
+        const newTodo = {
+            id: new Date().getTime(),
+            desc: `${ inputRef.current.value }`,
+            done: false
+        }
+
+        const action = {
+            type: 'add',
+            payload: newTodo
+        }
+
+        dispacth( action );
+
+        // cleanup input 
+        inputRef.current.value = '';
+    }
 
     return (
         <div className="container">
@@ -45,10 +67,12 @@ export const TodoApp = () => {
 
                 <div className="col-5">
 
-                    <form>
+                    <form onSubmit={ handleSubmit }>
                         <input 
                             type="text"
                             className="form-control"
+                            ref={ inputRef }
+                            onClick={ ({target}) => target.select()  }
                             placeholder="Add todo..."
                             name="description"
                             autoComplete="off"
