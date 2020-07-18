@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
 import { useForm } from '../../hooks/useForm';
-import { upperCaseFirstLetter } from '../../helpers/uppercaseFirstLetter';
+import { TodoList } from './TodoList';
 
 import './styles.css';
 
@@ -88,33 +88,11 @@ export const TodoApp = () => {
             <div className="row">
 
                 <div className="col-7">
-                    { todos.length > 0 &&
-                        <ul className="todo-list">
-                            {
-                                todos.map( (item, i) => {
-                                    return (
-                                        <div 
-                                            key={ item.id }
-                                            className="todo-item"
-                                        >
-                                            <p  
-                                                className={ `${ item.done && 'complete' }` }
-                                                onClick={ () => handleComplete( item.id ) }
-                                            >
-                                                {i+1}. { upperCaseFirstLetter(item.desc) }
-                                            </p>
-                                            <button
-                                                className="btn btn-outline-danger btn-sm"
-                                                onClick={ () => handleDelete( item.id ) }
-                                            >
-                                                Borrar
-                                            </button>
-                                        </div>
-                                    )
-                                })    
-                            }
-                        </ul>
-                    }
+                    <TodoList 
+                        todos={ todos }
+                        handleComplete={ handleComplete }
+                        handleDelete={ handleDelete }
+                    />
                 </div>
 
                 <div className="col-5">
