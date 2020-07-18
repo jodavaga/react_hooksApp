@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
-import { useForm } from '../../hooks/useForm';
 import { TodoList } from './TodoList';
+import { TodoAddForm } from './TodoAddForm';
 
 import './styles.css';
 
@@ -19,40 +19,16 @@ export const TodoApp = () => {
 
     const [ todos, dispacth ] = useReducer(todoReducer, [], init);
 
-    // custom hook to manage form, input changes
-    const [ {description}, handleInputChange, reset] = useForm({
-        description: ''
-    });
-
     // effect to save on localStorage
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [ todos ]);
 
-    // add new todo
-    const handleSubmit = ( e ) => {
-        e.preventDefault();
-
-        // prevent add empty todo
-        if (description.trim().length <= 1) {
-            return;
-        }
-
-        const newTodo = {
-            id: new Date().getTime(),
-            desc: `${ description }`,
-            done: false
-        }
-
-        const action = {
+    const handleAddTodo = ( newTodo ) => {
+        dispacth({
             type: 'add',
             payload: newTodo
-        }
-
-        dispacth( action );
-
-        // reset input form, using customHook function
-        reset();
+        });
     }
 
     // delete todo using reducer
@@ -68,11 +44,6 @@ export const TodoApp = () => {
     }
 
     const handleComplete = (todoId) => {
-        // action
-        // const toggleAction = {
-        //     type: 'toggle',
-        //     payload: todoId 
-        // }
         // dispatch
         dispacth({ 
             type: 'toggle',
@@ -96,26 +67,7 @@ export const TodoApp = () => {
                 </div>
 
                 <div className="col-5">
-
-                    <form onSubmit={ handleSubmit }>
-                        <input 
-                            type="text"
-                            name="description"
-                            className="form-control"
-                            onClick={ ({target}) => target.select()  }
-                            placeholder="Add todo..."
-                            autoComplete="off"
-                            value={ description }
-                            onChange={ handleInputChange }
-                        />
-
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-block mt-2"
-                        >
-                            Agregar
-                        </button>
-                    </form>
+                    <TodoAddForm handleAddTodo={ handleAddTodo } />
                 </div>
 
             </div>
