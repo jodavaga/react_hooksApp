@@ -55,6 +55,7 @@ export const TodoApp = () => {
         reset();
     }
 
+    // delete todo using reducer
     const handleDelete = ( todoId ) => {
 
         // action to delete
@@ -64,6 +65,19 @@ export const TodoApp = () => {
         }
 
         dispacth( deleteAction );
+    }
+
+    const handleComplete = (todoId) => {
+        // action
+        // const toggleAction = {
+        //     type: 'toggle',
+        //     payload: todoId 
+        // }
+        // dispatch
+        dispacth({ 
+            type: 'toggle',
+            payload: todoId 
+        });
     }
 
     return (
@@ -83,7 +97,12 @@ export const TodoApp = () => {
                                             key={ item.id }
                                             className="todo-item"
                                         >
-                                            <p>{i+1}. { upperCaseFirstLetter(item.desc) } </p>
+                                            <p  
+                                                className={ `${ item.done && 'complete' }` }
+                                                onClick={ () => handleComplete( item.id ) }
+                                            >
+                                                {i+1}. { upperCaseFirstLetter(item.desc) }
+                                            </p>
                                             <button
                                                 className="btn btn-outline-danger btn-sm"
                                                 onClick={ () => handleDelete( item.id ) }
