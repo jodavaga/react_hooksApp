@@ -1,5 +1,7 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer } from 'react';
 import { todoReducer } from './todoReducer';
+import { useForm } from '../../hooks/useForm';
+import { upperCaseFirstLetter } from '../../helpers/uppercaseFirstLetter';
 
 import './styles.css';
 
@@ -13,15 +15,24 @@ const initialState = [{
 export const TodoApp = () => {
 
     const [ todos, dispacth ] = useReducer(todoReducer, initialState);
-    const inputRef = useRef('');
+
+    // custom hook to manage form, input changes
+    const [ {description}, handleInputChange, reset] = useForm({
+        description: ''
+    });
 
     // add new todo
     const handleSubmit = ( e ) => {
         e.preventDefault();
 
+        // prevent add empty todo
+        if (description.trim().length <= 1) {
+            return;
+        }
+
         const newTodo = {
             id: new Date().getTime(),
-            desc: `${ inputRef.current.value }`,
+            desc: `${ description }`,
             done: false
         }
 
@@ -32,8 +43,8 @@ export const TodoApp = () => {
 
         dispacth( action );
 
-        // cleanup input 
-        inputRef.current.value = '';
+        // reset input form, using customHook function
+        reset();
     }
 
     return (
@@ -52,7 +63,7 @@ export const TodoApp = () => {
                                         key={ item.id }
                                         className="todo-item"
                                     >
-                                        <p>{i+1}. { item.desc } </p>
+                                        <p>{i+1}. { upperCaseFirstLetter(item.desc) } </p>
                                         <button
                                             className="btn btn-outline-danger btn-sm"
                                         >
@@ -70,12 +81,13 @@ export const TodoApp = () => {
                     <form onSubmit={ handleSubmit }>
                         <input 
                             type="text"
+                            name="description"
                             className="form-control"
-                            ref={ inputRef }
                             onClick={ ({target}) => target.select()  }
                             placeholder="Add todo..."
-                            name="description"
                             autoComplete="off"
+                            value={ description }
+                            onChange={ handleInputChange }
                         />
 
                         <button
