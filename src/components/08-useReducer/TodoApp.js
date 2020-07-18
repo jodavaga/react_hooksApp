@@ -1,25 +1,33 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
 import { useForm } from '../../hooks/useForm';
 import { upperCaseFirstLetter } from '../../helpers/uppercaseFirstLetter';
 
 import './styles.css';
 
+const init = () => {
+    const initialState = [{
+        id: new Date().getTime(),
+        desc: 'Estudiar React',
+        done: false
+    }];
 
-const initialState = [{
-    id: new Date().getTime(),
-    desc: 'Estudiar React',
-    done: false
-}];
+    return JSON.parse(localStorage.getItem('todos')) || initialState;
+}
 
 export const TodoApp = () => {
 
-    const [ todos, dispacth ] = useReducer(todoReducer, initialState);
+    const [ todos, dispacth ] = useReducer(todoReducer, [], init);
 
     // custom hook to manage form, input changes
     const [ {description}, handleInputChange, reset] = useForm({
         description: ''
     });
+
+    // effect to save on localStorage
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [ todos ]);
 
     // add new todo
     const handleSubmit = ( e ) => {
