@@ -55,6 +55,17 @@ export const TodoApp = () => {
         reset();
     }
 
+    const handleDelete = ( todoId ) => {
+
+        // action to delete
+        const deleteAction = {
+            type: 'delete',
+            payload: todoId
+        }
+
+        dispacth( deleteAction );
+    }
+
     return (
         <div className="container">
             <h1>Todo APP</h1>
@@ -63,25 +74,28 @@ export const TodoApp = () => {
             <div className="row">
 
                 <div className="col-7">
-                    <ul className="todo-list">
-                        {
-                            todos.map( (item, i) => {
-                                return (
-                                    <div 
-                                        key={ item.id }
-                                        className="todo-item"
-                                    >
-                                        <p>{i+1}. { upperCaseFirstLetter(item.desc) } </p>
-                                        <button
-                                            className="btn btn-outline-danger btn-sm"
+                    { todos.length > 0 &&
+                        <ul className="todo-list">
+                            {
+                                todos.map( (item, i) => {
+                                    return (
+                                        <div 
+                                            key={ item.id }
+                                            className="todo-item"
                                         >
-                                            Borrar
-                                        </button>
-                                    </div>
-                                )
-                            })    
-                        }
-                    </ul>
+                                            <p>{i+1}. { upperCaseFirstLetter(item.desc) } </p>
+                                            <button
+                                                className="btn btn-outline-danger btn-sm"
+                                                onClick={ () => handleDelete( item.id ) }
+                                            >
+                                                Borrar
+                                            </button>
+                                        </div>
+                                    )
+                                })    
+                            }
+                        </ul>
+                    }
                 </div>
 
                 <div className="col-5">
