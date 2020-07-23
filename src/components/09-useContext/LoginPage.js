@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { UserContext } from './UserContext';
+import { useHistory } from 'react-router-dom';
 
 export const LoginPage = () => {
 
@@ -11,6 +12,9 @@ export const LoginPage = () => {
 
     // useContext (use of UserContext)
     const { user, setUser } = useContext( UserContext );
+
+    // router navigation
+    const history = useHistory();
     
 
     const handleSubmit = (e) => {
@@ -22,6 +26,10 @@ export const LoginPage = () => {
             username,
             password
         });
+
+        // navigate to HomePage after submit
+        history.push('/');
+
     }
 
     return (
@@ -65,7 +73,7 @@ export const LoginPage = () => {
             <br/>
             <pre>   
                 {/* get values from context */}
-                {` usuario registrado: ${ JSON.stringify(user, null, 3) } `}
+                { user.username && `usuario registrado: ${ JSON.stringify(user, null, 3) }` }
             </pre>
 
 

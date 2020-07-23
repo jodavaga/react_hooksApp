@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
+import { useHistory } from 'react-router-dom';
 
 export const HomePage = () => {
 
     const { user, setUser } = useContext( UserContext );
 
+    const history = useHistory();
+
     const handleLogout = () => {
         setUser({});
+
+        alert('Loged out!');
+        history.push('/login');
     }
 
     return (
