@@ -8,7 +8,7 @@ export const MultipleCustomHooks = () => {
     const state = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` );
 
 
-    console.log(state);
+    // console.log(state);
 
     const { data, loading, error } = state;
 

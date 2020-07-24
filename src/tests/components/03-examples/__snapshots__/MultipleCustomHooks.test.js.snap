@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <MultipleCustomHooks /> should render component initialState 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Breaking Bad Quotes
+  </h1>
+  <hr />
+  <div
+    className="alert alert-info"
+  >
+    Loading...
+  </div>
+  <button
+    className="btn btn-primary mt-3"
+    onClick={[Function]}
+  >
+    Next
+  </button>
+</div>
+`;
