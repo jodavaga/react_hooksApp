@@ -10,7 +10,7 @@ export const useFetch = ( url ) => {
     useEffect(() => {
 
         return () => {
-            console.log("unmounted");
+            // console.log("unmounted");
             isMounted.current = false;
         }
     }, [])
@@ -35,7 +35,7 @@ export const useFetch = ( url ) => {
                     setState({
                         data,
                         loading: false,
-                        errors: null
+                        error: null
                     })
                 } else {
                     console.log('setState not triggered')
@@ -45,7 +45,7 @@ export const useFetch = ( url ) => {
                 setState({
                     data: null,
                     loading: false,
-                    error
+                    error: 'Algo salio mal'
                 })
             })
     }, [ url ]);
