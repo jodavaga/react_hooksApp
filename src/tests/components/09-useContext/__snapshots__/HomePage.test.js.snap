@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <HomePage /> should render component 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    HomePage
+  </h1>
+  <hr />
+  <div
+    className="d-flex justify-content-end"
+  >
+    <button
+      className="btn btn-outline-danger"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
+  <pre>
+    {
+   "name": "Jose D.",
+   "email": "email@mail.com"
+}
+  </pre>
+</div>
+`;

@@ -28,7 +28,7 @@ export const LoginPage = () => {
         });
 
         // navigate to HomePage after submit
-        history.push('/');
+        // history.push('/');
 
     }
 

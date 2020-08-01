@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <LoginPage /> should render component 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    LoginPage
+  </h1>
+  <hr />
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <input
+        autoComplete="off"
+        className="form-control"
+        name="username"
+        onChange={[Function]}
+        placeholder="username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <input
+        autoComplete="off"
+        className="form-control"
+        name="password"
+        onChange={[Function]}
+        placeholder="password"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="btn btn-primary mt-3"
+      type="submit"
+    >
+      Guardar
+    </button>
+  </form>
+  <br />
+  <pre>
+    usuario registrado: {
+   "username": "Jose D.",
+   "password": "12345"
+}
+  </pre>
+</div>
+`;
