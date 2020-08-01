@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <TodoListItem /> should render component 1`] = `
+<div
+  className="todo-item"
+>
+  <p
+    className="false"
+    onClick={[Function]}
+  >
+    1
+    . 
+    Estudiar React
+  </p>
+  <button
+    className="btn btn-outline-danger btn-sm"
+    onClick={[Function]}
+  >
+    Borrar
+  </button>
+</div>
+`;
