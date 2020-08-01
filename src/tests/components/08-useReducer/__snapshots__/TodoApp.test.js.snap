@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test on <TodoApp /> should render component 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Todo APP - (
+    1
+    )
+  </h1>
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="col-7"
+    >
+      <TodoList
+        handleComplete={[Function]}
+        handleDelete={[Function]}
+        todos={
+          Array [
+            Object {
+              "desc": "Estudiar React",
+              "done": false,
+              "id": 0,
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="col-5"
+    >
+      <TodoAddForm
+        handleAddTodo={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

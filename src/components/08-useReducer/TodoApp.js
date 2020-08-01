@@ -7,7 +7,7 @@ import './styles.css';
 
 const init = () => {
     const initialState = [{
-        id: new Date().getTime(),
+        id: 0,
         desc: 'Estudiar React',
         done: false
     }];
@@ -53,7 +53,7 @@ export const TodoApp = () => {
 
     return (
         <div className="container">
-            <h1>Todo APP</h1>
+            <h1>Todo APP - ({ todos.length })</h1>
             <hr />
 
             <div className="row">

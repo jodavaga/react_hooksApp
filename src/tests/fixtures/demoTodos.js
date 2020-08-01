@@ -6,7 +6,7 @@ export const demoTodos = [
     },
     {
         id: 2,
-        desc: 'Estudiar React',
+        desc: 'Aprender React-native',
         done: false
     }
 ]

@@ -25,7 +25,7 @@ exports[`test on <TodoList /> should render component 1`] = `
       key="2"
       todo={
         Object {
-          "desc": "Estudiar React",
+          "desc": "Aprender React-native",
           "done": false,
           "id": 2,
         }
