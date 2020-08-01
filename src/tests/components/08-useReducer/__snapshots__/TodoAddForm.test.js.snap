@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests on <TodoAddForm /> should render component 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    autoComplete="off"
+    className="form-control"
+    name="description"
+    onChange={[Function]}
+    onClick={[Function]}
+    placeholder="Add todo..."
+    type="text"
+    value=""
+  />
+  <button
+    className="btn btn-primary btn-block mt-2"
+    type="submit"
+  >
+    Agregar
+  </button>
+</form>
+`;
